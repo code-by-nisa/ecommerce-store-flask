@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Cart{% endblock %}
+{% block content %}
+<h2 class="section-title">Aapka cart</h2>
+{% if items %}
+<table class="table">
+  {% for i in items %}
+  <tr>
+    <td>{{ i.product.name }}</td>
+    <td>x{{ i.qty }}</td>
+    <td>Rs. {{ i.sub }}</td>
+    <td><form method="post" action="{{ url_for('remove', pid=i.product.id) }}"><button class="link">Hatayein</button></form></td>
+  </tr>
+  {% endfor %}
+</table>
+<p class="total">Total: Rs. {{ total }}</p>
+<a class="btn" href="{{ url_for('checkout') }}">Checkout</a>
+{% else %}
+<p>Cart khali hai. <a href="{{ url_for('shop') }}">Shop par jayein</a>.</p>
+{% endif %}
+{% endblock %}

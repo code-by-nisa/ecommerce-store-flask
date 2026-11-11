@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <h1>Shukriya, {{ name }}!</h1>
+  <p>Aapka order mil gaya hai. Hum jald rabta karenge.</p>
+  <a class="btn" href="{{ url_for('shop') }}">Aur shopping karein</a>
+</section>
+{% endblock %}

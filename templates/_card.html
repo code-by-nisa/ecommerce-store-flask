@@ -1,0 +1,5 @@
+<a class="card" href="{{ url_for('product', pid=p.id) }}">
+  <div class="img">{{ p.name[0] }}</div>
+  <h3>{{ p.name }}</h3>
+  <p class="price">Rs. {{ p.price }}</p>
+</a>

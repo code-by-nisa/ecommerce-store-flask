@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <h1>Roz ki cheezein, acchi quality mein.</h1>
+  <p>Chunay hue products, seedha aapke darwaze tak.</p>
+  <a class="btn" href="{{ url_for('shop') }}">Shop dekhein</a>
+</section>
+<h2 class="section-title">Naye products</h2>
+<div class="grid">
+  {% for p in products %}{% include "_card.html" %}{% endfor %}
+</div>
+{% endblock %}

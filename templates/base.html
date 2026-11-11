@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Nisa Store{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="nav">
+    <a class="logo" href="{{ url_for('home') }}">Nisa Store</a>
+    <nav>
+      <a href="{{ url_for('shop') }}">Shop</a>
+      <a href="{{ url_for('cart') }}">Cart ({{ cart_count }})</a>
+    </nav>
+  </header>
+  <main>{% block content %}{% endblock %}</main>
+  <footer class="footer">Nisa Store. Cash on Delivery available.</footer>
+</body>
+</html>
