@@ -1,21 +1,14 @@
 {% extends "base.html" %}
-{% block title %}Cart{% endblock %}
+{% block title %}Your Bag | TheBuyNest{% endblock %}
 {% block content %}
-<h2 class="section-title">Aapka cart</h2>
+<section class="page-intro"><p class="eyebrow">YOUR SELECTION</p><h1>Your bag</h1><p>A few good choices, all in one place.</p></section>
 {% if items %}
-<table class="table">
+<div class="bag-layout"><div class="bag-items">
   {% for i in items %}
-  <tr>
-    <td>{{ i.product.name }}</td>
-    <td>x{{ i.qty }}</td>
-    <td>Rs. {{ i.sub }}</td>
-    <td><form method="post" action="{{ url_for('remove', pid=i.product.id) }}"><button class="link">Hatayein</button></form></td>
-  </tr>
+  <article class="bag-item"><img src="{{ i.product.image }}" alt="{{ i.product.name }}"><div class="bag-item-info"><span class="eyebrow">{{ i.product.category }}</span><h3>{{ i.product.name }}</h3><p>Quantity: {{ i.qty }}</p><form method="post" action="{{ url_for('remove', pid=i.product.id) }}"><button class="text-link">Remove</button></form></div><strong>${{ "%.2f"|format(i.sub) }}</strong></article>
   {% endfor %}
-</table>
-<p class="total">Total: Rs. {{ total }}</p>
-<a class="btn" href="{{ url_for('checkout') }}">Checkout</a>
+</div><aside class="order-summary"><p class="eyebrow">ORDER SUMMARY</p><div class="summary-line"><span>Subtotal</span><strong>${{ "%.2f"|format(total) }}</strong></div><div class="summary-line"><span>Shipping</span><span>Calculated at checkout</span></div><div class="summary-total"><span>Total</span><strong>${{ "%.2f"|format(total) }}</strong></div><a class="button button-dark button-wide" href="{{ url_for('checkout') }}">Continue to checkout</a></aside></div>
 {% else %}
-<p>Cart khali hai. <a href="{{ url_for('shop') }}">Shop par jayein</a>.</p>
+<div class="empty-state"><h2>Your bag is waiting.</h2><p>Explore the collection and find something lovely.</p><a class="button button-dark" href="{{ url_for('shop') }}">Explore the collection</a></div>
 {% endif %}
 {% endblock %}
