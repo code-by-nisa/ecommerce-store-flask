@@ -1,5 +1,10 @@
-<a class="card" href="{{ url_for('product', pid=p.id) }}">
-  <div class="img">{{ p.name[0] }}</div>
-  <h3>{{ p.name }}</h3>
-  <p class="price">Rs. {{ p.price }}</p>
-</a>
+<article class="product-card">
+  <a class="product-image-link" href="{{ url_for('product', pid=p.id) }}">
+    <img class="product-image" src="{{ p.image }}" alt="{{ p.name }}" loading="lazy">
+    <span class="image-quick-view">Discover</span>
+  </a>
+  <div class="product-meta"><span>{{ p.category }}</span><span>THEBUY NEST EDIT</span></div>
+  <a class="product-name" href="{{ url_for('product', pid=p.id) }}">{{ p.name }}</a>
+  <p class="product-price">${{ "%.2f"|format(p.price) }}</p>
+  <form method="post" action="{{ url_for('add_to_cart', pid=p.id) }}"><button class="button button-outline button-small">Add to bag</button></form>
+</article>
