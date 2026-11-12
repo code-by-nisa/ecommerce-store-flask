@@ -1,12 +1,27 @@
 {% extends "base.html" %}
+{% block title %}TheBuyNest | Elevated Everyday Living{% endblock %}
 {% block content %}
 <section class="hero">
-  <h1>Roz ki cheezein, acchi quality mein.</h1>
-  <p>Chunay hue products, seedha aapke darwaze tak.</p>
-  <a class="btn" href="{{ url_for('shop') }}">Shop dekhein</a>
+  <div class="hero-copy">
+    <p class="eyebrow">THE ART OF EVERYDAY LIVING</p>
+    <h1>Find the beauty in <em>everyday.</em></h1>
+    <p class="hero-description">Thoughtfully selected pieces for your wardrobe, your home and everything in between.</p>
+    <a class="button button-dark" href="{{ url_for('shop') }}">Explore the collection <span>↗</span></a>
+  </div>
+  <div class="hero-image" role="img" aria-label="Elegant neutral fashion and lifestyle collection"></div>
+  <div class="hero-note">THEBUY NEST <span>—</span> A LITTLE MORE LOVELY, EVERY DAY</div>
 </section>
-<h2 class="section-title">Naye products</h2>
-<div class="grid">
-  {% for p in products %}{% include "_card.html" %}{% endfor %}
-</div>
+<section class="category-section">
+  <div class="section-heading"><div><p class="eyebrow">CURATED COLLECTIONS</p><h2>Shop by category</h2></div><a class="text-link" href="{{ url_for('shop') }}">View everything ↗</a></div>
+  <div class="category-grid">
+    {% for category in categories %}
+    <a class="category-tile category-{{ loop.index }}" href="{{ url_for('shop', category=category) }}"><span>{{ category }}</span><b>Explore ↗</b></a>
+    {% endfor %}
+  </div>
+</section>
+<section class="products-section">
+  <div class="section-heading"><div><p class="eyebrow">THE LATEST EDIT</p><h2>Selected for you</h2></div><a class="text-link" href="{{ url_for('shop') }}">Shop all products ↗</a></div>
+  <div class="product-grid">{% for p in products %}{% include "_card.html" %}{% endfor %}</div>
+</section>
+<section class="brand-note"><p class="eyebrow">OUR POINT OF VIEW</p><h2>Less ordinary.<br><em>More meaningful.</em></h2><p>We believe the things you choose should make everyday moments feel special.</p></section>
 {% endblock %}
