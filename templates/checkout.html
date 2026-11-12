@@ -1,12 +1,13 @@
 {% extends "base.html" %}
-{% block title %}Checkout{% endblock %}
+{% block title %}Checkout | TheBuyNest{% endblock %}
 {% block content %}
-<h2 class="section-title">Checkout</h2>
-<form method="post" class="form">
-  <label>Naam <input name="name" required></label>
-  <label>Phone <input name="phone" required></label>
-  <label>Address <textarea name="address" required></textarea></label>
-  <p class="total">Total: Rs. {{ total }} (Cash on Delivery)</p>
-  <button class="btn">Order place karein</button>
-</form>
+<section class="page-intro"><p class="eyebrow">ALMOST YOURS</p><h1>Checkout</h1><p>Enter your details and we’ll take it from here.</p></section>
+<div class="checkout-layout"><form method="post" class="checkout-form">
+  <label>Full name<input name="name" autocomplete="name" required></label>
+  <label>Email address<input type="email" name="email" autocomplete="email" required></label>
+  <label>Phone number<input name="phone" autocomplete="tel" required></label>
+  <label>Delivery address<textarea name="address" autocomplete="street-address" required></textarea></label>
+  <p class="payment-note">Payment method: Cash on Delivery (availability depends on your delivery location).</p>
+  <button class="button button-dark button-wide">Place order</button>
+</form><aside class="order-summary"><p class="eyebrow">YOUR ORDER</p>{% for i in items %}<div class="summary-line"><span>{{ i.product.name }} × {{ i.qty }}</span><strong>${{ "%.2f"|format(i.sub) }}</strong></div>{% endfor %}<div class="summary-total"><span>Total</span><strong>${{ "%.2f"|format(total) }}</strong></div></aside></div>
 {% endblock %}
