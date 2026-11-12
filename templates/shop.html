@@ -1,8 +1,11 @@
 {% extends "base.html" %}
-{% block title %}Shop{% endblock %}
+{% block title %}Shop the Collection | TheBuyNest{% endblock %}
 {% block content %}
-<h2 class="section-title">Saare products</h2>
-<div class="grid">
-  {% for p in products %}{% include "_card.html" %}{% endfor %}
-</div>
+<section class="page-intro"><p class="eyebrow">THE BUY NEST EDIT</p><h1>{% if selected_category %}{{ selected_category }}{% else %}The collection{% endif %}</h1><p>Discover thoughtful pieces for a more beautiful everyday.</p></section>
+<div class="filter-row"><a class="filter-chip {% if not selected_category %}active{% endif %}" href="{{ url_for('shop') }}">All pieces</a>{% for category in categories %}<a class="filter-chip {% if selected_category == category %}active{% endif %}" href="{{ url_for('shop', category=category) }}">{{ category }}</a>{% endfor %}</div>
+{% if products %}
+<div class="product-grid">{% for p in products %}{% include "_card.html" %}{% endfor %}</div>
+{% else %}
+<p class="empty-state">No products in this collection yet. Please explore all pieces.</p>
+{% endif %}
 {% endblock %}
