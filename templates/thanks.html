@@ -1,8 +1,5 @@
 {% extends "base.html" %}
+{% block title %}Thank You | TheBuyNest{% endblock %}
 {% block content %}
-<section class="hero">
-  <h1>Shukriya, {{ name }}!</h1>
-  <p>Aapka order mil gaya hai. Hum jald rabta karenge.</p>
-  <a class="btn" href="{{ url_for('shop') }}">Aur shopping karein</a>
-</section>
+<section class="thank-you"><p class="eyebrow">ORDER RECEIVED</p><h1>Thank you, {{ name }}.</h1><p>Your order details have been received. Our team will be in touch to confirm delivery.</p><a class="button button-dark" href="{{ url_for('shop') }}">Continue exploring</a></section>
 {% endblock %}
