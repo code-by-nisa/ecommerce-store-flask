@@ -1,15 +1,11 @@
 {% extends "base.html" %}
-{% block title %}{{ p.name }}{% endblock %}
+{% block title %}{{ p.name }} | TheBuyNest{% endblock %}
 {% block content %}
-<div class="detail">
-  <div class="img big">{{ p.name[0] }}</div>
-  <div>
-    <h1>{{ p.name }}</h1>
-    <p class="price">Rs. {{ p.price }}</p>
-    <p>{{ p.desc }}</p>
-    <form method="post" action="{{ url_for('add_to_cart', pid=p.id) }}">
-      <button class="btn">Cart mein daalein</button>
-    </form>
+<div class="product-detail">
+  <div class="detail-image-wrap"><img class="detail-image" src="{{ p.image }}" alt="{{ p.name }}"></div>
+  <div class="detail-copy"><p class="eyebrow">{{ p.category }} / THEBUY NEST EDIT</p><h1>{{ p.name }}</h1><p class="detail-price">${{ "%.2f"|format(p.price) }}</p><p class="detail-description">{{ p.desc }}</p><p class="shipping-note">Thoughtfully selected for everyday living.</p>
+    <form method="post" action="{{ url_for('add_to_cart', pid=p.id) }}"><button class="button button-dark button-wide">Add to bag — ${{ "%.2f"|format(p.price) }}</button></form>
+    <a class="text-link back-link" href="{{ url_for('shop', category=p.category) }}">← Back to {{ p.category }}</a>
   </div>
 </div>
 {% endblock %}
